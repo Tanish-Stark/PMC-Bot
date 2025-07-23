@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 from sentence_transformers import SentenceTransformer
 from pinecone import Pinecone
 import google.generativeai as genai
+from fastapi.middleware.cors import CORSMiddleware
 import os
 
 # Load env vars
@@ -21,6 +22,14 @@ index = pc.Index(PINECONE_INDEX)
 
 # FastAPI
 app = FastAPI(title="PMC RAG Chatbot API")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Or restrict to ["http://localhost:3000"] if needed
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 class ChatRequest(BaseModel):
     query: str
