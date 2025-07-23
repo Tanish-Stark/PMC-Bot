@@ -1,0 +1,12 @@
+langchain
+openai
+pinecone-client
+tqdm
+python-dotenv
+sentence-transformers
+pinecone
+requests
+fastapi
+pydantic
+numpy
+google-generativeai
